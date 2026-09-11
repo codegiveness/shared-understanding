@@ -17,7 +17,7 @@ Choose one distribution method, then connect the working agent. Do not install m
 **npm: versioned prose you install explicitly**
 
 ```sh
-npm install --global --ignore-scripts @codegiveness/shared-understanding@0.1.1
+npm install --global --ignore-scripts @codegiveness/shared-understanding@0.1.2
 npm root --global
 ```
 
@@ -49,12 +49,12 @@ Copy [the skill directory](skills/productivity/shared-understanding/) to your ha
 
 Merge **both sections of [AGENTS.md](AGENTS.md)** into the persistent instruction file your harness actually loads:
 
-- **Shared understanding:** start, every-turn interpretation, material changes, approval boundaries, and context recovery.
+- **Shared understanding:** discovery, user-settled direction for vague goals, every-turn interpretation, material changes, approval boundaries, and context recovery.
 - **Engineering judgment:** scope discipline, grounded claims, proportionate effort, cause-based fixes, mistake ownership, and complete delivery with honest verification.
 
 `AGENTS.md` is the canonical, copyable integration snippet. It is intentionally not shortened or duplicated here. Replace only its skill path with your installed skill reference; keep existing project-specific instructions and security rules. Merge overlapping sections rather than stacking duplicates. A filename alone does not guarantee that a harness loads it.
 
-The agent performing the task should maintain the agreement. No separate interviewing subagent is required. On subsequent turns, check interpretation lightly; ask only when the answer would materially change the work or approval is required.
+The agent performing the task should maintain the agreement. No separate interviewing subagent is required. Once a direction is settled, interpret later turns lightly; ask only about a consequential unresolved choice or required approval, not to repeat the same checkpoint.
 
 The skill guides intent discovery and continuity; the engineering section governs how that intent is implemented and checked. Installing only the skill omits the integration block's detailed engineering safeguards. Neither file is a runtime enforcement mechanism.
 
@@ -70,11 +70,11 @@ Start a fresh session or use a documented harness reload after changing discover
 
 Sometimes the user knows what hurts but cannot yet describe a satisfactory result. Asking for a complete specification does not solve that. Nor does translating “useful” or “professional” into precise requirements the agent invented. A concrete example, a contrast, or a small authorized draft can help both sides discover what matters.
 
-The agreement is a **working model**, not a contract frozen on the first turn. Learn enough for the next meaningful step, preserve settled constraints, and revise the affected interpretation when evidence or feedback changes it.
+The agreement is a **working model**, not a contract frozen on the first turn. For vague goals, the user settles a concrete direction through a clear choice, approval, or scoped delegation before implementation. The agent helps develop that direction rather than deciding alone that enough is known. Preserve settled constraints and revise the affected interpretation when evidence or feedback changes it.
 
 | Failure | Intended response |
 |---|---|
-| A vague or still-forming goal | Ground it in a real situation or contrasting examples; keep proposed interpretations tentative. |
+| A vague or still-forming goal | Develop it through real situations or contrasting examples; get a user-settled direction before implementation, not just an agent-written paraphrase. |
 | Guessing disguised as precision | Separate user requirements, observed facts, and agent assumptions; expose consequential differences before committing. |
 | Endless clarification or decision outsourcing | Investigate available facts; own ordinary technical choices within authorization; ask only what changes the work. |
 | Later-turn drift or unintended action | Preserve what a message does not change; distinguish discussion, scoped delegation, and approval. |
@@ -84,7 +84,7 @@ The agreement is a **working model**, not a contract frozen on the first turn. L
 | Incomplete delivery | Finish the agreed behavior and affected consumers; do not substitute a plan, partial migration, or narrow demonstration. |
 | Unsupported technical claims | Check consequential claims against applicable evidence; never invent APIs, citations, measurements, or verification results. |
 
-This is not “ask before everything” or “guess and let the user correct you later.” Ask before consequential unresolved choices; proceed on clear, authorized work. For subjective or developing goals, show a representative result before applying an uncertain interpretation everywhere.
+This is not “ask before everything” or “guess and let the user correct you later.” Clear, authorized requests proceed directly. Vague goals stay in discovery until the user chooses or approves a concrete direction or explicitly delegates that bounded choice. Permitted inspection and tentative examples can help get there; they do not authorize implementation. An existing clear answer can satisfy the checkpoint without another confirmation.
 
 **Outcome / Must preserve / Done means** are optional summaries, not a form users must complete. No magic wording is required from the user. Clear ordinary-language approval and scoped delegation count; an ambiguous “yes” to mutually exclusive options does not select one.
 

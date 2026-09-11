@@ -4,15 +4,15 @@ The session examples below describe expected behavior, not measured model output
 
 ## What counts as shared understanding?
 
-Not identical thoughts, a polished specification, or a confident “yes.” The useful target is enough common ground to take the next authorized step: what should change, what must remain true, which choices are settled or delegated, and what result would support or contradict the interpretation.
+Not identical thoughts, a polished specification, or a confident “yes.” The useful target is a concrete direction: what should change, what must remain true, which choices are settled or delegated, and what result would support or contradict the interpretation. For a vague goal, the user's clear choice, approval, or scoped delegation settles that direction before implementation—not the agent's assessment that it understands enough. A clear, authorized request may supply this from the start.
 
 The human may know the problem through experience without knowing the solution. The agent may know how to build a solution without knowing whether it matters. Bridge that gap with available evidence and concrete cases, not by demanding a better prompt or pretending to read the user's mind.
 
-A short working interpretation can help:
+For a vague goal, a short working interpretation can help:
 
-> You need support agents to tell customers what to do next, not explain the incident architecture. I will lead with the known workaround and keep the recovery time explicitly unknown.
+> My tentative read is that support agents need to tell customers what to do next, not explain the incident architecture. That would put a known workaround first and leave an unconfirmed recovery time explicitly unknown. Is that the direction you want?
 
-This is useful because its consequences are checkable. “You want a clear, useful incident update” merely repeats the ambiguity. No fixed summary format is required.
+This is useful because its consequences are checkable and the user can choose or reject the direction. “You want a clear, useful incident update” merely repeats the ambiguity. No fixed summary format is required; do not repeat the question if the user has already supplied that concrete direction and authorization.
 
 Keep an important decision's reason when it affects future judgment. For example, “No public upload: customer data must remain local” is more useful in a handoff than “Use a local tool.” Keep any exception scoped; keep an agent's proposed exception separate from the user's approval.
 
@@ -37,6 +37,14 @@ Keep an important decision's reason when it affects future judgment. For example
 **Expected next move:** change the representation instead of asking the user to define success again. For example: “Think of the last time that happened: what did you look up in your notes? That can tell us whether the missing piece is what to do next, who is blocked, or something else.”
 
 If the user still cannot say, offer a small, explicitly tentative contrast: a “next action” view versus a “blocked work” view using available data. Help them react to consequences without making them invent a specification. Keep this within the authorized exploration; a preference for a sketch is not permission to rebuild the application.
+
+**User:** “A deadline view seems promising. Show me how it would look before changing anything.”
+
+**Expected:** show a tentative, read-only example using known data or clearly labeled hypothetical data. Do not build the view yet: interest in an example is not approval to implement it.
+
+**User:** “Yes, implement that read-only view. Keep assignments and deadlines unchanged.”
+
+**Expected:** accept the bounded direction and proceed through the permitted workflow. This clear response satisfies the checkpoint; do not demand a second approval or keep interviewing after the choice is settled.
 
 ## False precision
 
@@ -69,6 +77,8 @@ If the user still cannot say, offer a small, explicitly tentative contrast: a �
 **Expected:** accept this scoped approval and exercise ordinary judgment. Do not demand the literal word “yes,” reject delegation as inadequate understanding, or expand permission to publishing.
 
 **Different case:** after “Replace the report, or add a second one?”, the reply “Yes” does not identify a choice. Clarify that distinction only. The problem is the unresolved referent, not the user's choice of approval phrase.
+
+**A question instead of an answer:** if the user asks “What are you trying to understand?”, explain the unresolved choice in relation to their goal. That question neither picks an option nor authorizes implementation. Repair the conversation and keep the choice open without making the user restart the task.
 
 ## Conflicting priorities without a technical interview
 
@@ -170,12 +180,12 @@ These are comparisons of the linked guidance, not evidence that one skill produc
 
 | Reference | Useful idea | What this repository deliberately does differently |
 |---|---|---|
-| [Matt Pocock: grilling](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md) | Resolve prerequisite decisions before dependent ones; discover environmental facts rather than asking the user. | Do not visit every design branch or send every decision to the user. Settle what the next commitment needs and retain delegated engineering judgment. |
+| [Matt Pocock: grilling](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md) | Resolve prerequisite decisions before dependent ones; discover environmental facts rather than asking the user. | Do not visit every design branch or send every decision to the user. Settle a vague direction with the user before implementation without exhausting the entire tree; retain delegated engineering judgment. |
 | [Superpowers: brainstorming](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md) | Ground design in project context, compare real alternatives, and use visual examples when they clarify the choice. | Do not require a new design approval for every already-clear, authorized task, a spec document, a separate planning skill, or a visual-companion installation. Existing approval gates still apply. |
 | [Prompt Master](https://github.com/nidhinjs/prompt-master/blob/main/SKILL.md) | Surface constraints, success criteria, and carry-forward context; ask for auditable evidence rather than hidden reasoning. | Do not make a rewritten prompt the prerequisite to collaboration, silently turn vague preferences into precise requirements, or promise zero re-prompts or guaranteed memory. Preserve decision status as well as content. |
-| [Addy Osmani: interview-me](https://github.com/addyosmani/agent-skills/blob/main/skills/interview-me/SKILL.md) | Distinguish a requested artifact from the need behind it; offer a tentative interpretation the user can correct. | Do not claim access to hidden “true” intent, score invented confidence, deliberately lead with a wrong guess, or reject clear ordinary-language approval and scoped delegation. Use concrete evidence rather than predicted agreement as the stopping rule. |
+| [Addy Osmani: interview-me](https://github.com/addyosmani/agent-skills/blob/main/skills/interview-me/SKILL.md) | Distinguish a requested artifact from the need behind it; offer a tentative interpretation the user can correct. | Do not claim access to hidden “true” intent, score invented confidence, deliberately lead with a wrong guess, or reject clear ordinary-language approval and scoped delegation. Use a concrete direction and actual user choice, approval, or delegation—not predicted agreement—as the checkpoint. |
 
-The resulting approach is adaptive: **ground the request → make the consequential interpretation checkable → take the next authorized step → compare the result and update**. This is not a mandatory four-message workflow. A clear task may need no questions; a developing goal may need several examples and revisions.
+The resulting approach is **ground the request → develop a checkable direction → user choice, approval, or scoped delegation → implement within that boundary → compare the result and update**. These are decision boundaries, not required messages. A clear, authorized request may supply the direction and authority together; a vague goal may need several examples and revisions before implementation.
 
 ## What evidence can establish
 
@@ -234,3 +244,11 @@ A follow-up held the revised skill constant and compared the original versus rev
 Both versions expressed the intended behavior in these cases: reuse an existing CSV helper instead of introducing a framework; identify an incomplete consumer migration; reject an absent parser API and an unmeasured speed claim; distinguish passed type checking from unrun tests and unverified UI; preserve real error outcomes instead of returning blanket success; select relevant offline verification; simplify without deleting required safeguards; reject a reliability guarantee; answer a clear typo request directly; and report a genuine publishing blocker without inventing success or asking again for existing approval.
 
 The exercise checks selected interpretation and reporting behavior, not actual implementation or tool use. Both versions behaved similarly; it does not establish that the expanded integration improves general reliability. The full inputs, both integration texts, constant skill text, replies, and observations were captured in the development session. Real-task compliance and prevention claims remain unproven.
+
+### User-settled direction: dialogue smoke observation
+
+The unreleased checkpoint revision was exercised through three scripted conversations with four, three, and two assistant turns, plus three single-turn controls. Scenarios and behavioral criteria were defined before the edit. Each actual assistant reply was carried into the next turn; the prompts asked for dialogue continuations rather than judgments about a described mistake.
+
+Observed behavior: the agent offered concrete contrasts after “I do not know,” kept example comparison separate from implementation, treated a counterquestion as an unresolved conversation rather than a selected improvement, and accepted a final scoped choice or delegation without another approval request. Controls preserved direct action on a clear typo request, honored existing concrete approval, and left an unavailable user's vague direction unresolved.
+
+The twelve replies used the same configured `default` completion alias with the skill and integration supplied directly. User turns were predefined, not live human feedback; no tools, installation activation, implementation, or compaction were exercised. The full inputs, actual replies, and observations were captured in the development session. This checks the selected dialogue boundaries, not whether real users achieve better shared understanding or whether the revision outperforms 0.1.1.

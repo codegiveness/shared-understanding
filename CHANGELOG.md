@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2
+
+- Require a user-settled direction before implementing vague goals: a concrete choice, approval, or explicit scoped delegation, not the agent's confidence alone.
+- Keep permitted discovery available while the direction is open; preserve direct action for clear requests and existing approval without ritual reconfirmation.
+- Keep unanswered choices open and repair conversational confusion instead of treating an unrelated reply as a decision.
+- Align skill discovery metadata, integration guidance, and examples with the checkpoint; record multi-turn dialogue smoke checks without claiming real-world reliability.
+
 ## 0.1.1
 
 - Help develop still-forming goals through concrete situations, contrasting examples, and small authorized probes instead of repeated abstract questions.
