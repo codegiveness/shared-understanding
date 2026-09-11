@@ -1,14 +1,14 @@
 # Shared Understanding: practice, design choices, and evidence
 
-The session examples below describe expected behavior, not measured model outputs or benchmarks. The [skill](../skills/productivity/shared-understanding/SKILL.md) is the behavioral source; [AGENTS.md](../AGENTS.md) supplies the integration rule and engineering safeguards.
+The examples below illustrate principles, not preferred answers, reusable question scripts, measured model outputs, or benchmarks. Different agents may handle the same situation differently. The [skill](../skills/productivity/shared-understanding/SKILL.md) is the behavioral source; [AGENTS.md](../AGENTS.md) supplies the integration rule and engineering safeguards. These examples are not part of routine skill activation.
 
 ## What counts as shared understanding?
 
 Not identical thoughts, a polished specification, or a confident “yes.” The useful target is a concrete direction: what should change, what must remain true, which choices are settled or delegated, and what result would support or contradict the interpretation. For a vague goal, the user's clear choice, approval, or scoped delegation settles that direction before implementation—not the agent's assessment that it understands enough. A clear, authorized request may supply this from the start.
 
-The human may know the problem through experience without knowing the solution. The agent may know how to build a solution without knowing whether it matters. Bridge that gap with available evidence and concrete cases, not by demanding a better prompt or pretending to read the user's mind.
+The human brings priorities and lived context; the agent brings capabilities and evidence. Neither alone establishes shared meaning. Work from the actual conversation rather than demanding a perfect prompt or filling missing context with a familiar task.
 
-For a vague goal, a short working interpretation can help:
+Given a request about a customer incident update with a known workaround and an unknown recovery time, one possible working interpretation is:
 
 > My tentative read is that support agents need to tell customers what to do next, not explain the incident architecture. That would put a known workaround first and leave an unconfirmed recovery time explicitly unknown. Is that the direction you want?
 
@@ -16,7 +16,7 @@ This is useful because its consequences are checkable and the user can choose or
 
 Keep an important decision's reason when it affects future judgment. For example, “No public upload: customer data must remain local” is more useful in a handoff than “Use a local tool.” Keep any exception scoped; keep an agent's proposed exception separate from the user's approval.
 
-For a broad review, shared understanding also includes the discovery boundary and its coverage—not just the next possible edit. Keep findings and their status available while the user decides which changes to authorize. “Find concrete defects” does not by itself mean “inspect one convenient workflow and stop at the first defect.”
+Understanding also includes scope: what the request covers, what remains undecided, and what authority has been given. Preserve the requested breadth without silently turning an open-ended prompt into a particular kind of task.
 
 ## A complete initial prompt
 
@@ -30,7 +30,7 @@ For a broad review, shared understanding also includes the discovery boundary an
 
 **Available context:** the dashboard contains tasks, deadlines, and owners.
 
-**Expected:** inspect relevant context before asking about facts already available. Ask which decision the dashboard should help with, or start with a recent situation where it failed the user. Do not choose charts or a redesign as though “useful” specified them.
+**Expected:** use available context and help the user develop what matters to them without inventing it or requiring a finished specification. The dialogue below is one possible exchange, not a required question sequence.
 
 **Agent:** “Which decision should it help you make?”
 
@@ -38,7 +38,7 @@ For a broad review, shared understanding also includes the discovery boundary an
 
 **Expected next move:** change the representation instead of asking the user to define success again. For example: “Think of the last time that happened: what did you look up in your notes? That can tell us whether the missing piece is what to do next, who is blocked, or something else.”
 
-If the user still cannot say, offer a small, explicitly tentative contrast: a “next action” view versus a “blocked work” view using available data. Help them react to consequences without making them invent a specification. Keep this within the authorized exploration; a preference for a sketch is not permission to rebuild the application.
+In this illustrated case, a small, tentative contrast using the known data could help the user react to possible consequences. Which contrast, if any, would help depends on the conversation. Keep it within the authorized exploration; interest in a sketch is not permission to rebuild the application.
 
 **User:** “A deadline view seems promising. Show me how it would look before changing anything.”
 
@@ -46,27 +46,17 @@ If the user still cannot say, offer a small, explicitly tentative contrast: a �
 
 **User:** “Yes, implement that read-only view. Keep assignments and deadlines unchanged.”
 
-**Expected:** accept the bounded direction and proceed through the permitted workflow. This clear response satisfies the checkpoint; do not demand a second approval or keep interviewing after the choice is settled.
+**Expected:** honor the clear direction and authorization without another approval request or continued interviewing.
 
-## Broad discovery before fix selection
+## The same request need not produce the same question
 
 **User:** “Make this app better.”
 
-**Expected:** use available context to distinguish a bounded defect-discovery pass from improving a specific workflow or investigating reported slowness. Ask only if that choice is still unresolved. Do not disguise a one-workflow investigation as the broad defect option.
+Those words alone do not establish the desired outcome or the method. The agent should use the actual conversation and available context, not inherit a purpose or menu from a skill example.
 
-**User:** “Find concrete defects.”
+The same request after a substantive conversation may already refer to a settled goal. Without that context, consequential meaning may still be missing. Treating both cases as the start of the same interview would discard useful information.
 
-**Expected:** map relevant areas, state the first-pass coverage boundary, and inspect representative paths across them. Investigate promising leads enough to substantiate or reject them; do not inventory every file or speculate about every possible feature. Finding a defect is progress, not completion of a broader pass.
-
-If the first area reveals a defect, retain it and continue the planned discovery rather than immediately asking to fix it. A genuinely blocking user-only decision or urgent risk can require an earlier interruption; otherwise consolidate the pass first. Preserve permission boundaries, and continue independent permitted checks when one area is blocked.
-
-The report should show what was reviewed and what was not, then every supported in-scope finding with evidence and impact. Keep unverified leads and accepted risks distinct. Group and rank a long list without hiding findings the user needs for a scope choice. “No defect established in the reviewed paths” is not “this area has no defects.”
-
-Now offer meaningful scope choices supported by the findings: for example, one high-impact independent fix, a related batch, or all supported fixes. The user may choose another scope or request more discovery. Findings are not implementation approval, and existing project gates still apply.
-
-**User, after one chosen fix:** “Make this app better.”
-
-**Expected:** carry forward the remaining findings and any fixed, deferred, or blocked status. Use still-current evidence; inspect again where source or context changed. Do not restart with another arbitrary single defect, or treat a deferred issue as newly approved. A request explicitly limited to one issue remains narrow throughout.
+There is no canonical next question. What matters is whether the response reflects the context, keeps proposals distinct from the user's choices, and respects the authority already given. Variation across agents and models is compatible with these principles; variation for its own sake is not the objective.
 
 ## False precision
 
@@ -206,11 +196,9 @@ These are comparisons of the linked guidance, not evidence that one skill produc
 | [Superpowers: brainstorming](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md) | Ground design in project context, compare real alternatives, and use visual examples when they clarify the choice. | Do not require a new design approval for every already-clear, authorized task, a spec document, a separate planning skill, or a visual-companion installation. Existing approval gates still apply. |
 | [Prompt Master](https://github.com/nidhinjs/prompt-master/blob/main/SKILL.md) | Surface constraints, success criteria, and carry-forward context; ask for auditable evidence rather than hidden reasoning. | Do not make a rewritten prompt the prerequisite to collaboration, silently turn vague preferences into precise requirements, or promise zero re-prompts or guaranteed memory. Preserve decision status as well as content. |
 | [Addy Osmani: interview-me](https://github.com/addyosmani/agent-skills/blob/main/skills/interview-me/SKILL.md) | Distinguish a requested artifact from the need behind it; offer a tentative interpretation the user can correct. | Do not claim access to hidden “true” intent, score invented confidence, deliberately lead with a wrong guess, or reject clear ordinary-language approval and scoped delegation. Use a concrete direction and actual user choice, approval, or delegation—not predicted agreement—as the checkpoint. |
-| [Ayghri: i-have-adhd](https://github.com/ayghri/i-have-adhd/blob/main/skills/i-have-adhd/SKILL.md) | Use an existing task tool as compact working state; make progress concrete; group and rank output without limiting analysis or omitting items when completeness matters. | Do not diagnose model lapses as ADHD or import human-specific assumptions, mandatory time estimates, or the default of finishing one issue before offering the next. A broad review needs its findings batch before fix selection, not a question after each defect. |
+| [Ayghri: i-have-adhd](https://github.com/ayghri/i-have-adhd/blob/main/skills/i-have-adhd/SKILL.md) | Keep useful state accessible rather than relying on implied memory. | Adopt the underlying concern for continuity, not prescribed formatting, time estimates, conversational cadence, or human-specific assumptions about the reader or model. |
 
-The resulting approach is **ground the request → develop a checkable direction → user choice, approval, or scoped delegation → implement within that boundary → compare the result and update**. These are decision boundaries, not required messages. A clear, authorized request may supply the direction and authority together; a vague goal may need several examples and revisions before implementation.
-
-For a broad improvement request, the discovery branch is **bounded coverage plan → representative investigation → consolidated findings and limits → user-selected implementation scope**. This branch is not required for a clear, narrow fix. Keep coverage and finding dispositions in existing task state rather than adding another memory document or repeating the whole plan every turn.
+The references inform principles, not a universal playbook. Context and judgment determine how to develop understanding; the user retains authority over their intent. No particular sequence, question style, menu, or visible summary is required by this skill.
 
 ## What evidence can establish
 
@@ -232,18 +220,19 @@ Cover vague and unformed goals, supplied information, conflicting constraints, s
 
 - Preserves supplied requirements without asking for them again.
 - Exposes the interpretation that would change the work, without inventing facts or preferences.
-- Helps an uncertain user react to a concrete case instead of repeating abstract questions.
+- Helps an uncertain user develop what matters without forcing a questionnaire or supplying an assumed goal.
 - Asks before a consequential unresolved commitment while proceeding on authorized independent work.
-- Completes a bounded broad-discovery pass before proposing fix scope, rather than stopping at the first finding.
-- Presents all supported findings from that pass, separates leads and accepted risks, and discloses coverage limits without claiming an exhaustive audit.
+- Responds to the actual context rather than reusing instructional examples as default objectives.
 - Updates the affected decision and work without losing unrelated constraints.
-- Carries remaining findings across repeated requests without reopening deferred work or imposing a broad survey on a narrow task.
+- Carries relevant prior work and decisions forward without resetting them or treating an unresolved choice as approval.
 - Distinguishes intent fit, implementation evidence, and what remains unverified.
 - Completes the agreed behaviors and affected consumers without speculative scope expansion or silent reduction.
 - Grounds technical claims and accurately distinguishes passed, failed, unavailable, and unperformed checks.
 - Removes unnecessary machinery without dropping necessary requirements or approval boundaries.
 
 Do not score a preferred phrase, number of headings, confidence display, or exact interview sequence. Fewer questions can mean either better discovery or more guessing; more tool calls do not prove diligence, and fewer lines of code do not prove simplicity. A correction can be productive learning, not failure; count avoidable committed rework, violated constraints, incomplete deliverables, unsupported claims, and unrelated scope expansion separately.
+
+Do not require a canonical next question or artificial variation between replies. Different wording alone does not establish less steering: inspect what purpose the response assumes, which choices it leaves with the user, and whether it follows the supplied context.
 
 For a comparative evaluation, hold the model, harness instructions, tool access, scenario, and sampling settings constant as far as the environment allows. Record the loaded skill revision, inputs, actual outputs/actions, rubric, and failures. Repeat runs and use human judgments of usefulness for claims beyond a smoke check. Include real multi-turn tasks and actual recovery in each supported harness before making continuity claims.
 
@@ -281,7 +270,9 @@ Observed behavior: the agent offered concrete contrasts after “I do not know,�
 
 The twelve replies used the same configured `default` completion alias with the skill and integration supplied directly. User turns were predefined, not live human feedback; no tools, installation activation, implementation, or compaction were exercised. The full inputs, actual replies, and observations were captured in the development session. This checks the selected dialogue boundaries, not whether real users achieve better shared understanding or whether the revision outperforms 0.1.1.
 
-### Bounded discovery: action-selection smoke observation
+### Historical bounded-discovery action-selection observation
+
+This exercise evaluated the workflow later released in 0.1.3, which the principle-based revision supersedes. It is retained as historical evidence, not current instructions. It tested adherence to that workflow, not whether the workflow itself framed an open-ended request too narrowly.
 
 The unreleased discovery revision after 0.1.2 was exercised with three synthetic cases and nine model-selected actions. Behavioral criteria were defined before editing. The skill and integration were supplied directly; a small driver accepted structured actions such as mapping, inspection, questioning, and reporting. In the broad-review case, source packets were supplied only after the corresponding inspection requests, so the later findings were not all present in the initial prompt.
 
@@ -290,3 +281,11 @@ The unreleased discovery revision after 0.1.2 was exercised with three synthetic
 - **Repeated broad request:** the model carried forward four open findings, one fixed issue, one deferred issue, and the runtime coverage limit. It offered scope choices without beginning another arbitrary one-defect search.
 
 Each case ran once using the configured `default` completion alias; resolved model and sampling settings were not exposed by the interface. The full guidance, fixtures, inputs, actual action sequences, and observations were retained in the development session. This is simulated action ordering and report completeness—not real repository navigation, independent defect detection, installed-skill activation, implementation, runtime verification, live human agreement, or compaction recovery. It does not establish improved real-world reliability.
+
+### Principle-based guidance smoke observation
+
+The unreleased principle-based revision after 0.1.3 was exercised on five predefined conversations using the configured `default` and `smol` completion aliases, once per case and alias: ten replies. Criteria were defined before editing. The skill and integration were supplied directly, without a response schema, prescribed next question, or preferred sequence. Criteria were not included in the model prompts.
+
+The cases covered an underspecified request, supplied personal context, a clear text transformation, an explicitly requested technical explanation, and correction of an assumed tone. Replies reflected the supplied context and retained important constraints; clear requests did not become interviews. Several responses were similar across aliases, including an identical correct sentence. The personal-context responses also recommended retaining existing functionality, which was an agent suggestion rather than an explicit additional user constraint.
+
+These observations do not establish absence of framing, improved reliability, or guaranteed variation. Resolved model identifiers and sampling settings were not exposed, so distinct aliases do not establish distinct underlying models. No real tools, repository navigation, installed-skill activation, application changes, live multi-turn human feedback, or compaction were exercised. Inputs, guidance, replies, and observations were retained in the development session rather than installed as another behavioral script.

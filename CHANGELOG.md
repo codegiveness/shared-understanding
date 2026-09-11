@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.4
+
+- Replace task-specific discovery instructions with principles for intent, authority, evidence, proportionate judgment, and continuity.
+- Remove the prescribed review sequence, task menus, question quota, readback formats, and review-specific state fields from the skill and integration.
+- Leave question choice, wording, and approach responsive to the conversation and agent, while preserving user-settled direction, scoped delegation, existing approvals, and honest completion.
+- Align public guidance and examples with those principles; mark the prior workflow check as historical and record context-sensitive smoke observations without claiming unbiased or necessarily different responses.
+
 ## 0.1.3
 
 - Separate broad discovery from implementation scope: complete a bounded coverage pass before presenting fixes, rather than narrowing a broad option to one workflow or stopping at the first defect.
