@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3
+
+- Separate broad discovery from implementation scope: complete a bounded coverage pass before presenting fixes, rather than narrowing a broad option to one workflow or stopping at the first defect.
+- Consolidate all supported findings with evidence and impact; distinguish unverified leads, accepted risks, and unreviewed areas without claiming an exhaustive audit.
+- Carry current phase, coverage, and open/fixed/deferred/blocked findings across turns and handoffs; preserve narrow requests and existing approval boundaries.
+- Adapt compact task state and complete-but-grouped presentation from the attention-support reference, not its default one-issue-at-a-time delivery; document bounded action-selection smoke observations and their limits.
+
 ## 0.1.2
 
 - Require a user-settled direction before implementing vague goals: a concrete choice, approval, or explicit scoped delegation, not the agent's confidence alone.

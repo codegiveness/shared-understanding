@@ -16,6 +16,8 @@ This is useful because its consequences are checkable and the user can choose or
 
 Keep an important decision's reason when it affects future judgment. For example, “No public upload: customer data must remain local” is more useful in a handoff than “Use a local tool.” Keep any exception scoped; keep an agent's proposed exception separate from the user's approval.
 
+For a broad review, shared understanding also includes the discovery boundary and its coverage—not just the next possible edit. Keep findings and their status available while the user decides which changes to authorize. “Find concrete defects” does not by itself mean “inspect one convenient workflow and stop at the first defect.”
+
 ## A complete initial prompt
 
 **User:** “Fix the typo ‘Recieve’ to ‘Receive’ in the checkout heading. Change nothing else.”
@@ -45,6 +47,26 @@ If the user still cannot say, offer a small, explicitly tentative contrast: a �
 **User:** “Yes, implement that read-only view. Keep assignments and deadlines unchanged.”
 
 **Expected:** accept the bounded direction and proceed through the permitted workflow. This clear response satisfies the checkpoint; do not demand a second approval or keep interviewing after the choice is settled.
+
+## Broad discovery before fix selection
+
+**User:** “Make this app better.”
+
+**Expected:** use available context to distinguish a bounded defect-discovery pass from improving a specific workflow or investigating reported slowness. Ask only if that choice is still unresolved. Do not disguise a one-workflow investigation as the broad defect option.
+
+**User:** “Find concrete defects.”
+
+**Expected:** map relevant areas, state the first-pass coverage boundary, and inspect representative paths across them. Investigate promising leads enough to substantiate or reject them; do not inventory every file or speculate about every possible feature. Finding a defect is progress, not completion of a broader pass.
+
+If the first area reveals a defect, retain it and continue the planned discovery rather than immediately asking to fix it. A genuinely blocking user-only decision or urgent risk can require an earlier interruption; otherwise consolidate the pass first. Preserve permission boundaries, and continue independent permitted checks when one area is blocked.
+
+The report should show what was reviewed and what was not, then every supported in-scope finding with evidence and impact. Keep unverified leads and accepted risks distinct. Group and rank a long list without hiding findings the user needs for a scope choice. “No defect established in the reviewed paths” is not “this area has no defects.”
+
+Now offer meaningful scope choices supported by the findings: for example, one high-impact independent fix, a related batch, or all supported fixes. The user may choose another scope or request more discovery. Findings are not implementation approval, and existing project gates still apply.
+
+**User, after one chosen fix:** “Make this app better.”
+
+**Expected:** carry forward the remaining findings and any fixed, deferred, or blocked status. Use still-current evidence; inspect again where source or context changed. Do not restart with another arbitrary single defect, or treat a deferred issue as newly approved. A request explicitly limited to one issue remains narrow throughout.
 
 ## False precision
 
@@ -184,8 +206,11 @@ These are comparisons of the linked guidance, not evidence that one skill produc
 | [Superpowers: brainstorming](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md) | Ground design in project context, compare real alternatives, and use visual examples when they clarify the choice. | Do not require a new design approval for every already-clear, authorized task, a spec document, a separate planning skill, or a visual-companion installation. Existing approval gates still apply. |
 | [Prompt Master](https://github.com/nidhinjs/prompt-master/blob/main/SKILL.md) | Surface constraints, success criteria, and carry-forward context; ask for auditable evidence rather than hidden reasoning. | Do not make a rewritten prompt the prerequisite to collaboration, silently turn vague preferences into precise requirements, or promise zero re-prompts or guaranteed memory. Preserve decision status as well as content. |
 | [Addy Osmani: interview-me](https://github.com/addyosmani/agent-skills/blob/main/skills/interview-me/SKILL.md) | Distinguish a requested artifact from the need behind it; offer a tentative interpretation the user can correct. | Do not claim access to hidden “true” intent, score invented confidence, deliberately lead with a wrong guess, or reject clear ordinary-language approval and scoped delegation. Use a concrete direction and actual user choice, approval, or delegation—not predicted agreement—as the checkpoint. |
+| [Ayghri: i-have-adhd](https://github.com/ayghri/i-have-adhd/blob/main/skills/i-have-adhd/SKILL.md) | Use an existing task tool as compact working state; make progress concrete; group and rank output without limiting analysis or omitting items when completeness matters. | Do not diagnose model lapses as ADHD or import human-specific assumptions, mandatory time estimates, or the default of finishing one issue before offering the next. A broad review needs its findings batch before fix selection, not a question after each defect. |
 
 The resulting approach is **ground the request → develop a checkable direction → user choice, approval, or scoped delegation → implement within that boundary → compare the result and update**. These are decision boundaries, not required messages. A clear, authorized request may supply the direction and authority together; a vague goal may need several examples and revisions before implementation.
+
+For a broad improvement request, the discovery branch is **bounded coverage plan → representative investigation → consolidated findings and limits → user-selected implementation scope**. This branch is not required for a clear, narrow fix. Keep coverage and finding dispositions in existing task state rather than adding another memory document or repeating the whole plan every turn.
 
 ## What evidence can establish
 
@@ -209,7 +234,10 @@ Cover vague and unformed goals, supplied information, conflicting constraints, s
 - Exposes the interpretation that would change the work, without inventing facts or preferences.
 - Helps an uncertain user react to a concrete case instead of repeating abstract questions.
 - Asks before a consequential unresolved commitment while proceeding on authorized independent work.
+- Completes a bounded broad-discovery pass before proposing fix scope, rather than stopping at the first finding.
+- Presents all supported findings from that pass, separates leads and accepted risks, and discloses coverage limits without claiming an exhaustive audit.
 - Updates the affected decision and work without losing unrelated constraints.
+- Carries remaining findings across repeated requests without reopening deferred work or imposing a broad survey on a narrow task.
 - Distinguishes intent fit, implementation evidence, and what remains unverified.
 - Completes the agreed behaviors and affected consumers without speculative scope expansion or silent reduction.
 - Grounds technical claims and accurately distinguishes passed, failed, unavailable, and unperformed checks.
@@ -252,3 +280,13 @@ The unreleased checkpoint revision was exercised through three scripted conversa
 Observed behavior: the agent offered concrete contrasts after “I do not know,” kept example comparison separate from implementation, treated a counterquestion as an unresolved conversation rather than a selected improvement, and accepted a final scoped choice or delegation without another approval request. Controls preserved direct action on a clear typo request, honored existing concrete approval, and left an unavailable user's vague direction unresolved.
 
 The twelve replies used the same configured `default` completion alias with the skill and integration supplied directly. User turns were predefined, not live human feedback; no tools, installation activation, implementation, or compaction were exercised. The full inputs, actual replies, and observations were captured in the development session. This checks the selected dialogue boundaries, not whether real users achieve better shared understanding or whether the revision outperforms 0.1.1.
+
+### Bounded discovery: action-selection smoke observation
+
+The unreleased discovery revision after 0.1.2 was exercised with three synthetic cases and nine model-selected actions. Behavioral criteria were defined before editing. The skill and integration were supplied directly; a small driver accepted structured actions such as mapping, inspection, questioning, and reporting. In the broad-review case, source packets were supplied only after the corresponding inspection requests, so the later findings were not all present in the initial prompt.
+
+- **Broad review:** the model clarified the direction, mapped the app, inspected Orders, Inventory, and Exports, then reported all six fixture-backed contract violations before asking for implementation scope. The report preserved an accepted BOM decision, separated an unmeasured performance lead, and disclosed the unreviewed browser surface.
+- **Narrow authorized fix:** the model inspected only the named CSV file and requested the already-approved fix without a broad survey or another approval question. It did not claim implementation or verification had occurred.
+- **Repeated broad request:** the model carried forward four open findings, one fixed issue, one deferred issue, and the runtime coverage limit. It offered scope choices without beginning another arbitrary one-defect search.
+
+Each case ran once using the configured `default` completion alias; resolved model and sampling settings were not exposed by the interface. The full guidance, fixtures, inputs, actual action sequences, and observations were retained in the development session. This is simulated action ordering and report completeness—not real repository navigation, independent defect detection, installed-skill activation, implementation, runtime verification, live human agreement, or compaction recovery. It does not establish improved real-world reliability.

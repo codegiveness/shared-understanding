@@ -17,7 +17,7 @@ Choose one distribution method, then connect the working agent. Do not install m
 **npm: versioned prose you install explicitly**
 
 ```sh
-npm install --global --ignore-scripts @codegiveness/shared-understanding@0.1.2
+npm install --global --ignore-scripts @codegiveness/shared-understanding@0.1.3
 npm root --global
 ```
 
@@ -75,9 +75,11 @@ The agreement is a **working model**, not a contract frozen on the first turn. F
 | Failure | Intended response |
 |---|---|
 | A vague or still-forming goal | Develop it through real situations or contrasting examples; get a user-settled direction before implementation, not just an agent-written paraphrase. |
+| A broad review stops at its first defect | Complete a bounded discovery pass, consolidate all supported findings and coverage limits, then let the user choose implementation scope. |
 | Guessing disguised as precision | Separate user requirements, observed facts, and agent assumptions; expose consequential differences before committing. |
 | Endless clarification or decision outsourcing | Investigate available facts; own ordinary technical choices within authorization; ask only what changes the work. |
 | Later-turn drift or unintended action | Preserve what a message does not change; distinguish discussion, scoped delegation, and approval. |
+| Repeating a broad request starts another one-defect search | Carry forward open, fixed, deferred, and blocked findings; revisit evidence when the relevant context changes. |
 | Lost context | Recover decisions and their reasons; never promote a remembered guess into permission. |
 | A result that passes checks but misses the point | Check intent fit as well as technical correctness; repair the mistaken interpretation without blaming the prompt. |
 | Unnecessary complexity | Reuse established paths; add machinery only for current requirements or supported risks, without dropping necessary behavior. |
@@ -85,6 +87,8 @@ The agreement is a **working model**, not a contract frozen on the first turn. F
 | Unsupported technical claims | Check consequential claims against applicable evidence; never invent APIs, citations, measurements, or verification results. |
 
 This is not “ask before everything” or “guess and let the user correct you later.” Clear, authorized requests proceed directly. Vague goals stay in discovery until the user chooses or approves a concrete direction or explicitly delegates that bounded choice. Permitted inspection and tentative examples can help get there; they do not authorize implementation. An existing clear answer can satisfy the checkpoint without another confirmation.
+
+Discovery breadth and implementation scope are different choices. A broad defect review should cover representative relevant areas before presenting a findings batch; it should not smuggle “one workflow only” into the first question. Report all findings from that pass, grouped by impact, while distinguishing defects from unverified leads and disclosing unreviewed areas. This is bounded discovery—not a claim to find every possible defect. A clear one-issue request stays narrow.
 
 **Outcome / Must preserve / Done means** are optional summaries, not a form users must complete. No magic wording is required from the user. Clear ordinary-language approval and scoped delegation count; an ambiguous “yes” to mutually exclusive options does not select one.
 
