@@ -1,8 +1,8 @@
 # Shared Understanding
 
-**Establish the goal together. Preserve it as the session changes.**
+**Discover the goal together. Preserve what matters. Check the result.**
 
-A concise agent skill for understanding the request before acting, interpreting later messages without silently changing the agreement, and recovering decisions when context is lost.
+A concise agent skill for developing intent when a goal is still forming, understanding the request before committing, interpreting later messages without silently changing the agreement, and recovering decisions when context is lost.
 
 The user should not need a perfect prompt. The agent should not need a scripted interview for every task. Honest engineering still matters after both agree on the goal.
 
@@ -17,7 +17,7 @@ Choose one distribution method, then connect the working agent. Do not install m
 **npm: versioned prose you install explicitly**
 
 ```sh
-npm install --global --ignore-scripts @codegiveness/shared-understanding@0.1.0
+npm install --global --ignore-scripts @codegiveness/shared-understanding@0.1.1
 npm root --global
 ```
 
@@ -50,11 +50,13 @@ Copy [the skill directory](skills/productivity/shared-understanding/) to your ha
 Merge **both sections of [AGENTS.md](AGENTS.md)** into the persistent instruction file your harness actually loads:
 
 - **Shared understanding:** start, every-turn interpretation, material changes, approval boundaries, and context recovery.
-- **Engineering judgment:** the complete six safeguards for solving the real problem, owning evidence, respecting cost, revising mistaken approaches, owning mistakes, and finishing with honest verification.
+- **Engineering judgment:** scope discipline, grounded claims, proportionate effort, cause-based fixes, mistake ownership, and complete delivery with honest verification.
 
 `AGENTS.md` is the canonical, copyable integration snippet. It is intentionally not shortened or duplicated here. Replace only its skill path with your installed skill reference; keep existing project-specific instructions and security rules. Merge overlapping sections rather than stacking duplicates. A filename alone does not guarantee that a harness loads it.
 
 The agent performing the task should maintain the agreement. No separate interviewing subagent is required. On subsequent turns, check interpretation lightly; ask only when the answer would materially change the work or approval is required.
+
+The skill guides intent discovery and continuity; the engineering section governs how that intent is implemented and checked. Installing only the skill omits the integration block's detailed engineering safeguards. Neither file is a runtime enforcement mechanism.
 
 ### 3. Retire an older alignment installation
 
@@ -64,24 +66,37 @@ Start a fresh session or use a documented harness reload after changing discover
 
 ## Why this exists
 
-A good initial prompt does not prevent later drift. A short answer can be mistaken for new scope. An exploratory question can be mistaken for permission. Compaction can lose a constraint. Agreement about the goal does not make an implementation correct.
+“Sometimes smart, sometimes dumb” can describe different failures: solving the wrong problem, inventing facts, forgetting a constraint, making an unauthorized decision, or implementing an agreed idea incorrectly. An unclear prompt is one possible contributor, not a complete explanation or an excuse for agent mistakes.
 
-Shared Understanding addresses those boundaries without turning ordinary work into a requirements interview:
+Sometimes the user knows what hurts but cannot yet describe a satisfactory result. Asking for a complete specification does not solve that. Nor does translating “useful” or “professional” into precise requirements the agent invented. A concrete example, a contrast, or a small authorized draft can help both sides discover what matters.
 
-- Extract supplied requirements; investigate available facts yourself.
-- Surface consequential assumptions and tradeoffs before costly action.
-- Preserve everything a later message does not change.
-- Recover missing decisions rather than inventing approval.
-- Own mistakes instead of blaming the user's prompt by default.
-- Verify the intended outcome within permissions, then stop.
+The agreement is a **working model**, not a contract frozen on the first turn. Learn enough for the next meaningful step, preserve settled constraints, and revise the affected interpretation when evidence or feedback changes it.
 
-**Outcome / Must preserve / Done means** are optional summaries, not a form users must complete. Read the [session examples and evidence limits](docs/shared-understanding.md) for concrete cases. Reliability remains unmeasured.
+| Failure | Intended response |
+|---|---|
+| A vague or still-forming goal | Ground it in a real situation or contrasting examples; keep proposed interpretations tentative. |
+| Guessing disguised as precision | Separate user requirements, observed facts, and agent assumptions; expose consequential differences before committing. |
+| Endless clarification or decision outsourcing | Investigate available facts; own ordinary technical choices within authorization; ask only what changes the work. |
+| Later-turn drift or unintended action | Preserve what a message does not change; distinguish discussion, scoped delegation, and approval. |
+| Lost context | Recover decisions and their reasons; never promote a remembered guess into permission. |
+| A result that passes checks but misses the point | Check intent fit as well as technical correctness; repair the mistaken interpretation without blaming the prompt. |
+| Unnecessary complexity | Reuse established paths; add machinery only for current requirements or supported risks, without dropping necessary behavior. |
+| Incomplete delivery | Finish the agreed behavior and affected consumers; do not substitute a plan, partial migration, or narrow demonstration. |
+| Unsupported technical claims | Check consequential claims against applicable evidence; never invent APIs, citations, measurements, or verification results. |
+
+This is not “ask before everything” or “guess and let the user correct you later.” Ask before consequential unresolved choices; proceed on clear, authorized work. For subjective or developing goals, show a representative result before applying an uncertain interpretation everywhere.
+
+**Outcome / Must preserve / Done means** are optional summaries, not a form users must complete. No magic wording is required from the user. Clear ordinary-language approval and scoped delegation count; an ambiguous “yes” to mutually exclusive options does not select one.
+
+Together, the skill and integration block target avoidable misunderstanding, excess scope, unsupported claims, and incomplete work. They cannot supply missing model capability, guarantee factual accuracy, enforce permissions, or control what a harness retains. More agreement does not prove correctness, and fewer questions or corrections alone do not prove improvement. The product does not establish that it prevents hallucinations or every result someone might call “overengineered,” “lazy,” or “dumb”; evaluate the concrete failure, not the label.
+
+Read the [session examples, reference tradeoffs, and evaluation guidance](docs/shared-understanding.md). The behavioral approach remains unproven as a reliability intervention.
 
 ## Skill reference
 
 | Skill | Invocation | Purpose |
 |---|---|---|
-| [shared-understanding](skills/productivity/shared-understanding/SKILL.md) | User-requested or model-selected when supported; persistent rule supplies triggers | Maintain intent, constraints, decisions, and evidence throughout a session. |
+| [shared-understanding](skills/productivity/shared-understanding/SKILL.md) | User-requested or model-selected when supported; persistent rule supplies triggers | Develop and maintain intent, constraints, decisions, and evidence throughout a session. |
 
 Say **“Check our understanding before continuing”** when you want an explicit comparison. Equivalent wording works; it is not a required phrase on every turn.
 
@@ -97,7 +112,7 @@ skills/productivity/
   shared-understanding/
     SKILL.md               One canonical behavioral contract
 docs/
-  shared-understanding.md  Illustrative sessions and evidence limits
+  shared-understanding.md  Session examples, reference tradeoffs, and evidence limits
 ```
 
 The skill lives under `productivity` because it governs the session rather than a particular coding task. Directory and skill names use lowercase kebab-case. Examples stay outside the skill so routine activation loads only the behavioral guidance.

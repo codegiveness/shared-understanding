@@ -1,6 +1,6 @@
 {
   "name": "@codegiveness/shared-understanding",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A concise agent skill for shared intent, evolving decisions, and context recovery throughout a session.",
   "license": "MIT",
   "author": "codegiveness",
