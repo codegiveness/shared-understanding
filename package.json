@@ -1,0 +1,33 @@
+{
+  "name": "@codegiveness/shared-understanding",
+  "version": "0.1.0",
+  "description": "A concise agent skill for shared intent, evolving decisions, and context recovery throughout a session.",
+  "license": "MIT",
+  "author": "codegiveness",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codegiveness/shared-understanding.git"
+  },
+  "homepage": "https://github.com/codegiveness/shared-understanding#readme",
+  "bugs": {
+    "url": "https://github.com/codegiveness/shared-understanding/issues"
+  },
+  "keywords": [
+    "agent-skills",
+    "shared-understanding",
+    "prompt-engineering",
+    "agent"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "skills/",
+    "docs/",
+    "AGENTS.md",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ]
+}

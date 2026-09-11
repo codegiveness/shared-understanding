@@ -2,152 +2,109 @@
 
 **Establish the goal together. Preserve it as the session changes.**
 
-A concise agent skill for understanding the user's request before acting, interpreting later messages without silently changing the agreement, and recovering decisions when context is lost.
+A concise agent skill for understanding the request before acting, interpreting later messages without silently changing the agreement, and recovering decisions when context is lost.
 
-The user should not need a perfect prompt. The agent should not need a scripted interview for every task.
+The user should not need a perfect prompt. The agent should not need a scripted interview for every task. Honest engineering still matters after both agree on the goal.
 
-**Status:** prose guidance, not a proven reliability intervention. No consistency percentage, first-try guarantee, or cross-harness compaction guarantee is claimed.
+**Status:** prose guidance, not a proven reliability intervention. No success percentage, first-try guarantee, or cross-harness compaction guarantee is claimed.
 
-## What it does
+## Installation
 
-- Extracts requirements already present in the prompt instead of asking for them again.
-- Investigates available facts before handing questions back to the user.
-- Asks about choices that materially change the outcome, scope, permission, or acceptance.
-- Interprets every later message against the current agreement without restarting the interview.
-- Distinguishes exploring an idea from authorizing its implementation.
-- Preserves unaffected decisions and recovers missing context before consequential actions.
-- Keeps technical correctness and verification the agent's responsibility.
+Choose one distribution method, then connect the working agent. Do not install multiple active copies of the same skill.
 
-**Outcome / Must preserve / Done means** are useful summaries, not a mandatory form. Tradeoffs, decision authority, and available evidence matter too.
+### 1. Get the skill
 
-## Install the skill
-
-The repository follows the [Agent Skills format](https://agentskills.io/specification). The complete skill is [SKILL.md](skills/engineering/shared-understanding/SKILL.md); it needs no executable code, dependencies, or network access of its own.
-
-### Skills CLI
-
-Using the independently maintained [Skills CLI](https://skills.sh/docs/cli):
+**npm: versioned prose you install explicitly**
 
 ```sh
-npx skills add codegiveness/shared-understanding
+npm install --global --ignore-scripts @codegiveness/shared-understanding@0.1.0
+npm root --global
 ```
 
-Choose your supported agent and installation scope in that installer's interface. This command runs third-party code and may download packages; review the CLI's documentation and telemetry policy first. The skill itself performs no installation or telemetry. Installer support does not establish behavioral compatibility with every harness.
+The package is inside the printed directory at `@codegiveness/shared-understanding/`. Its skill is `skills/productivity/shared-understanding/SKILL.md`; the complete instruction block is `AGENTS.md`.
 
-### Manual installation
+This package has no CLI, dependencies, or install hooks. npm installs the files; it does not register a skill, edit agent configuration, or promise automatic activation. Copy the `shared-understanding` skill directory into your harness's documented skill location, or use its supported skill-management tool. Preserve the skill description and body. Include the [MIT license](LICENSE) with redistributed copies. Do not overwrite an existing installation with local modifications without reviewing it.
 
-Copy `skills/engineering/shared-understanding/` into the skill directory documented by your harness, retaining the directory name and `SKILL.md`. Include this repository's [MIT license](LICENSE) with redistributed copies. For harnesses without skill discovery, reference the file directly from their persistent instruction mechanism.
+To update the package later:
 
-Installing a skill makes it available; it does **not** guarantee automatic activation or execution on every turn.
-
-## Connect the working agent
-
-Use the same agent that performs the task, not a separate interviewer that lacks its context. No custom agent runtime or subagent is required.
-
-Merge this short rule into the instruction file your harness actually loads, such as `AGENTS.md`. Do not overwrite existing rules or assume the filename is supported everywhere.
-
-```markdown
-## Shared understanding
-
-Read the shared-understanding skill at task start. On every later message,
-interpret it against the current goal, constraints, and decisions; update only
-what changed. Use the question tool, or chat if unavailable, for consequential
-unresolved choices and required approvals—not repeated answers or ritual
-confirmation. Apply the skill again for material changes, understanding checks,
-or missing agreement context. Recover available context/history before asking
-for lost decisions; missing context is not permission. Preserve the agreement
-when producing handoffs. Do not restart the interview or reread the skill on
-every turn. Follow existing safety rules and approval boundaries.
+```sh
+npm install --global --ignore-scripts @codegiveness/shared-understanding@latest
 ```
 
-Make the first sentence point to the actual installed skill if your harness cannot resolve skill names. For a checkout kept at the project root, the file is `skills/engineering/shared-understanding/SKILL.md`. After copying the skill elsewhere, use that destination instead.
+Then refresh the active skill and instruction block from that installed version. A copied skill does not update when npm updates. Prefer explicit, reviewed refreshes over a second independently edited copy.
 
-For OMP users already using `session-alignment`, this covers the same responsibility. Choose one governing skill and update its reference; do not stack both. This repository does not automatically modify global configuration or migrate an existing installation.
+**Skills CLI: install through its supported harness adapters**
 
-## Session examples
+```sh
+npx skills@latest add codegiveness/shared-understanding
+```
 
-These are illustrative expected behaviors, **not measured model outputs or benchmarks**. They are useful for checking whether your agent understood the contract.
+Choose the skill, agent, and installation scope in the [Skills CLI](https://skills.sh/docs/cli). This independently maintained installer runs third-party code and has its own telemetry policy. Adapter support is not proof that every model will follow the guidance.
 
-### A complete initial prompt
+**Manual: no npm required**
 
-**User:** “Fix the typo ‘Recieve’ to ‘Receive’ in the checkout heading. Change nothing else.”
+Copy [the skill directory](skills/productivity/shared-understanding/) to your harness's skill directory, or reference its `SKILL.md` directly if the harness supports instruction-file references. The skill is ordinary Markdown following the [Agent Skills specification](https://agentskills.io/specification).
 
-**Expected:** locate and correct that heading; perform the permitted proportionate check. Do not ask for Outcome, Must preserve, and Done means again or redesign checkout.
+### 2. Connect the working agent
 
-### An underspecified goal
+Merge **both sections of [AGENTS.md](AGENTS.md)** into the persistent instruction file your harness actually loads:
 
-**User:** “Make this dashboard useful.”
+- **Shared understanding:** start, every-turn interpretation, material changes, approval boundaries, and context recovery.
+- **Engineering judgment:** the complete six safeguards for solving the real problem, owning evidence, respecting cost, revising mistaken approaches, owning mistakes, and finishing with honest verification.
 
-**Expected:** inspect the available dashboard context, then ask which decision it should help its intended user make. Offer grounded interpretations if possible. Do not select new charts or redesign the page based on assumptions.
+`AGENTS.md` is the canonical, copyable integration snippet. It is intentionally not shortened or duplicated here. Replace only its skill path with your installed skill reference; keep existing project-specific instructions and security rules. Merge overlapping sections rather than stacking duplicates. A filename alone does not guarantee that a harness loads it.
 
-### A second-turn answer
+The agent performing the task should maintain the agreement. No separate interviewing subagent is required. On subsequent turns, check interpretation lightly; ask only when the answer would materially change the work or approval is required.
 
-**Agent:** “Should the export contain selected rows or all filtered rows?”
+### 3. Retire an older alignment installation
 
-**User:** “All filtered rows. Keep the existing columns.”
+If you already use an overlapping alignment skill, first install and verify `shared-understanding`, update the governing instruction reference, then remove the retired installation through your harness's supported mechanism. Preserve unrelated instructions and user-authored content. Do not keep two active versions.
 
-**Expected:** update row selection and preserve the existing columns and other settled constraints. Do not restart the requirements interview or silently include unfiltered rows.
+Start a fresh session or use a documented harness reload after changing discovery metadata; an existing session can retain old injected descriptions. Installation and file equality do not prove model compliance or compaction behavior.
 
-### Exploration is not permission
+## Why this exists
 
-**User:** “Would a database index help?”
+A good initial prompt does not prevent later drift. A short answer can be mistaken for new scope. An exploratory question can be mistaken for permission. Compaction can lose a constraint. Agreement about the goal does not make an implementation correct.
 
-**Expected:** investigate and explain whether an index could help. Do not create an index merely because the user asked about it; observe the applicable database approval boundary.
+Shared Understanding addresses those boundaries without turning ordinary work into a requirements interview:
 
-### A mid-session correction
+- Extract supplied requirements; investigate available facts yourself.
+- Surface consequential assumptions and tradeoffs before costly action.
+- Preserve everything a later message does not change.
+- Recover missing decisions rather than inventing approval.
+- Own mistakes instead of blaming the user's prompt by default.
+- Verify the intended outcome within permissions, then stop.
 
-**User:** “Actually, leave export alone. Only fix the date filter.”
+**Outcome / Must preserve / Done means** are optional summaries, not a form users must complete. Read the [session examples and evidence limits](docs/shared-understanding.md) for concrete cases. Reliability remains unmeasured.
 
-**Expected:** stop export work, identify any export edits already made, and state the narrowed scope. Address only your own now-out-of-scope changes within applicable permissions; never discard unrelated user changes. Preserve constraints that still apply to the date filter.
+## Skill reference
 
-### A requested understanding check
+| Skill | Invocation | Purpose |
+|---|---|---|
+| [shared-understanding](skills/productivity/shared-understanding/SKILL.md) | User-requested or model-selected when supported; persistent rule supplies triggers | Maintain intent, constraints, decisions, and evidence throughout a session. |
 
-**User:** “Check our understanding before continuing.”
+Say **“Check our understanding before continuing”** when you want an explicit comparison. Equivalent wording works; it is not a required phrase on every turn.
 
-**Expected:** pause substantive work and briefly show the current goal, changes, preserved constraints, and unresolved choice or next action. Ask only if something consequential remains unsettled.
+## Repository structure
 
-### Missing agreement after compaction
+```text
+AGENTS.md                  Complete integration block and engineering safeguards
+README.md                  Installation, purpose, and skill index
+package.json               Dependency-free npm distribution
+CHANGELOG.md               Published content changes
+LICENSE                    MIT license
+skills/productivity/
+  shared-understanding/
+    SKILL.md               One canonical behavioral contract
+docs/
+  shared-understanding.md  Illustrative sessions and evidence limits
+```
 
-**Available context:** the goal is present, but the record of permission to publish is missing.
-
-**Expected:** try accessible history first. If permission cannot be recovered, ask before publication. Do not claim it was approved because the files are ready. Continue independent authorized local work when safe.
-
-## Limits and evidence
-
-The skill can expose misunderstandings; it cannot guarantee that a model detects every ambiguity or produces correct work. User approval validates intent, not implementation quality.
-
-Three separate things matter:
-
-1. **Availability:** the harness can find the skill and persistent instruction rule.
-2. **Continuity:** current decisions, constraints, and scoped approvals remain accessible.
-3. **Execution:** the agent follows the guidance and verifies the intended outcome.
-
-Saving a file establishes none of these end to end. Instruction loading, tool names, precedence, history access, and compaction differ by harness. A handoff preserves information only if it is actually produced and retained. This project has no hook that intercepts every turn or controls a harness's compactor.
-
-To evaluate it in normal work, look for specific failures: repeated supplied questions, silently changed scope, discussion treated as permission, lost constraints, or completion claimed without evidence. If one occurs, identify whether the cause was missing instructions, missing context, or execution despite available guidance. Fix that cause rather than adding another overlapping skill. Never publish private session content without permission.
-
-Do not report a success rate without a defined evaluation set, failure criteria, and recorded outcomes. The examples above are not such a measurement. No automated installer, multi-harness runtime, or real compaction recovery verification is claimed here.
-
-## Relationship to Kernel
-
-[`kernel-prompt`](https://github.com/codegiveness/kernel-prompt) refines the request supplied to an agent. **Shared Understanding** maintains the interpretation while the agent works and the user responds. They are complementary, but neither is a prerequisite for the other.
-
-This project does not adopt the claim that every failure originates in a vague prompt. An agent can misunderstand a clear request, make an unsupported technical claim, or implement the right goal incorrectly.
-
-## Influences
-
-The guidance grew from the author's OMP `session-alignment` workflow. Useful ideas were compared with:
-
-- [prompt-master](https://github.com/nidhinjs/prompt-master/blob/main/SKILL.md): extract supplied intent before asking.
-- [grilling](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md): settle prerequisite decisions before dependent questions.
-- [brainstorming](https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md): surface intent and tradeoffs before costly implementation.
-- [interview-me](https://github.com/addyosmani/agent-skills/blob/main/skills/interview-me/SKILL.md): offer concrete interpretations the user can correct.
-
-This is a selective synthesis, not an installation of those workflows. It deliberately omits endless interviews, mandatory approval of every paraphrase, unsupported confidence percentages, and assumptions that the agent knows the user's needs better than the user.
+The skill lives under `productivity` because it governs the session rather than a particular coding task. Directory and skill names use lowercase kebab-case. Examples stay outside the skill so routine activation loads only the behavioral guidance.
 
 ## Contributing
 
-Prefer a concrete misalignment scenario and the smallest rule change that addresses it. Preserve clear-request autonomy, user authority, safety boundaries, and honest limitations. Add examples only when they expose a distinct failure mode; do not grow an exhaustive questionnaire or claim that a wording change has proven behavioral benefits.
+Bring a concrete failure scenario and the smallest justified change. Update the canonical skill or integration block, not a parallel variant. Preserve user authority, evidence ownership, proportional effort, and safety boundaries. Verification of packaging is not proof of better model behavior.
 
 ## License
 
