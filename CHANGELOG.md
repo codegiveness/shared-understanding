@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.5
+
+- Rewrite the skill around connected responsibilities for understanding, timely communication, execution, and correction.
+- Distinguish ordinary implementation choices from changes to agreed requirements or authority; expose consequential interpretations and discoveries before affected commitments.
+- Consolidate engineering safeguards into the skill and replace the overlapping integration sections with a brief activation and boundary block.
+- Exercise the revised guidance with eleven text-only development replies without claiming improved reliability or efficiency.
+- Flatten the source layout to `skills/shared-understanding/` and make the persistent block resolve the installed skill through the harness rather than a repository-relative path.
+- Use `npx skills@latest add codegiveness/shared-understanding` as the documented installation route, with a separate persistent-instruction step and no universal harness-support claim.
+- Redesign README and practice guidance for the current skill; remove obsolete retirement instructions, unsupported reference-adoption comparisons, and historical session reports from the usage docs.
+
 ## 0.1.4
 
 - Replace task-specific discovery instructions with principles for intent, authority, evidence, proportionate judgment, and continuity.
