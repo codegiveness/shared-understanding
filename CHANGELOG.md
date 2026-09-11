@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.6
+
+- Prefer the asking tool when continuing depends on an unsettled, undelegated user decision; derive questions from the conversation rather than a predefined subject or workflow.
+- Allow batching independently answerable questions and sequencing dependent ones; clarify that an answer settles only the choices it addresses.
+- Preserve context, uncertainty, alternatives, and the option to decline; do not substitute a recommendation or announcement for a user decision or add gates to already-authorized or completed work.
+- Keep examples illustrative in the practice docs rather than giving assessments or findings a dedicated rule in the skill or persistent integration block.
+- Add human-facing `docs/problems.md`: explain common collaboration complaints, human blind spots, and compounding agent assumptions without diagnosing motives or reversing one-sided blame; distinguish general principles from fixed workflows.
+- Describe an evidence-based confidence plan that starts with real interactions in the current environment and broadens without promising universal reliability or measured improvements.
+- Record the project's general-principle design constraint in `docs/general-principles.md`; link it from repository-development guidance while keeping it outside the copyable runtime integration section.
+- Clarify reported experience versus causal explanation, the limits of verification and model agreement, and revision of work that depends on a corrected premise.
+- Add bounded research context to the practice guide and strengthen evaluation guidance for loaded revisions, independent dimensions of success, and repeated outcomes; do not claim demonstrated improvement.
+- Correct practice guidance to reference only the copyable integration section; preserve repository-only development instructions and local-only revision scope.
+- Refine reconsideration as responsiveness to intent and evidence, not agreement or revision for its own sake; preserve supported conclusions and honor declined recommendations.
+- Document the mindfulness paper's measured-trait and decision-revision limits without prescribing reflection rituals or inferred user profiles; distinguish the Karpathy-inspired guidelines' authoring value from popularity-based efficacy claims.
+
 ## 0.1.5
 
 - Rewrite the skill around connected responsibilities for understanding, timely communication, execution, and correction.
