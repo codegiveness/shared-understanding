@@ -1,63 +1,53 @@
 # Changelog
 
-## 0.1.6
+## Unreleased
 
-- Prefer the asking tool when continuing depends on an unsettled, undelegated user decision; derive questions from the conversation rather than a predefined subject or workflow.
-- Allow batching independently answerable questions and sequencing dependent ones; clarify that an answer settles only the choices it addresses.
-- Preserve context, uncertainty, alternatives, and the option to decline; do not substitute a recommendation or announcement for a user decision or add gates to already-authorized or completed work.
-- Keep examples illustrative in the practice docs rather than giving assessments or findings a dedicated rule in the skill or persistent integration block.
-- Add human-facing `docs/problems.md`: explain common collaboration complaints, human blind spots, and compounding agent assumptions without diagnosing motives or reversing one-sided blame; distinguish general principles from fixed workflows.
-- Describe an evidence-based confidence plan that starts with real interactions in the current environment and broadens without promising universal reliability or measured improvements.
-- Record the project's general-principle design constraint in `docs/general-principles.md`; link it from repository-development guidance while keeping it outside the copyable runtime integration section.
-- Clarify reported experience versus causal explanation, the limits of verification and model agreement, and revision of work that depends on a corrected premise.
-- Add bounded research context to the practice guide and strengthen evaluation guidance for loaded revisions, independent dimensions of success, and repeated outcomes; do not claim demonstrated improvement.
-- Correct practice guidance to reference only the copyable integration section; preserve repository-only development instructions and local-only revision scope.
-- Refine reconsideration as responsiveness to intent and evidence, not agreement or revision for its own sake; preserve supported conclusions and honor declined recommendations.
-- Document the mindfulness paper's measured-trait and decision-revision limits without prescribing reflection rituals or inferred user profiles; distinguish the Karpathy-inspired guidelines' authoring value from popularity-based efficacy claims.
+- Move the reusable behavioral source from the mixed repository AGENTS.md into [GUIDANCE.md](GUIDANCE.md), preserving the existing guidance text during the split. The entire file is appendable; comment markers identify the installed block for updates, not a section to extract from repository instructions.
+- Make the repository's AGENTS.md development-only. Local Markdown archives include GUIDANCE.md instead; existing published npm artifacts remain unchanged.
+- Remove skill activation, the skill distribution, and local proposal artifacts. No installation step is needed to use the guidance.
+- Retire the npm delivery path: deprecate versions 0.1.0–0.1.6 with a migration link while preserving downloads, installation, and existing version tags. Mark the checkout private to prevent accidental publication; document migration and the limits of download-count evidence rather than assuming no users remain.
+- Retain concrete boundaries for intent, authority, independent execution, evidence, correction, and continuity while removing harness-specific tool instructions and prescribed question schedules.
+- Make asking explicit for unresolved consequential choices outside existing delegation. Prefer a suitable available user-question tool for necessary clarification, with conversational fallback and no new approval gates.
+- Separate adoption, design rationale, examples, and failure analysis with evaluation limits; rename the illustrative guide to [docs/examples.md](docs/examples.md) to distinguish it from the copy source.
+- Document whole-file adoption, migration from the combined AGENTS.md or retired skill, and preservation of unrelated host instructions. Add a contributor maintenance map and a bounded account of the reported mixed-audience problem; align affected references.
+- Apply the OpenAI prompt-design article without treating model-specific observations or reduced instruction length as evidence of reliability. No effectiveness improvement is claimed.
 
-## 0.1.5
+## Earlier releases
 
-- Rewrite the skill around connected responsibilities for understanding, timely communication, execution, and correction.
-- Distinguish ordinary implementation choices from changes to agreed requirements or authority; expose consequential interpretations and discoveries before affected commitments.
-- Consolidate engineering safeguards into the skill and replace the overlapping integration sections with a brief activation and boundary block.
-- Exercise the revised guidance with eleven text-only development replies without claiming improved reliability or efficiency.
-- Flatten the source layout to `skills/shared-understanding/` and make the persistent block resolve the installed skill through the harness rather than a repository-relative path.
-- Use `npx skills@latest add codegiveness/shared-understanding` as the documented installation route, with a separate persistent-instruction step and no universal harness-support claim.
-- Redesign README and practice guidance for the current skill; remove obsolete retirement instructions, unsupported reference-adoption comparisons, and historical session reports from the usage docs.
+These entries describe the retired skill-based delivery model, not instructions for current use. Development checks mentioned here do not establish the behavior of the current guidance.
 
-## 0.1.4
+### 0.1.6
 
-- Replace task-specific discovery instructions with principles for intent, authority, evidence, proportionate judgment, and continuity.
-- Remove the prescribed review sequence, task menus, question quota, readback formats, and review-specific state fields from the skill and integration.
-- Leave question choice, wording, and approach responsive to the conversation and agent, while preserving user-settled direction, scoped delegation, existing approvals, and honest completion.
-- Align public guidance and examples with those principles; mark the prior workflow check as historical and record context-sensitive smoke observations without claiming unbiased or necessarily different responses.
+- Clarify consequential decisions, partial answers, independent and dependent questions, and direct action within existing authority.
+- Add the general-principle design constraint, observable failure inventory, and evidence plan.
+- Distinguish reported experience from causal explanations, correction from reflexive agreement, and verified results from approval or model consensus.
 
-## 0.1.3
+### 0.1.5
 
-- Separate broad discovery from implementation scope: complete a bounded coverage pass before presenting fixes, rather than narrowing a broad option to one workflow or stopping at the first defect.
-- Consolidate all supported findings with evidence and impact; distinguish unverified leads, accepted risks, and unreviewed areas without claiming an exhaustive audit.
-- Carry current phase, coverage, and open/fixed/deferred/blocked findings across turns and handoffs; preserve narrow requests and existing approval boundaries.
-- Adapt compact task state and complete-but-grouped presentation from the attention-support reference, not its default one-issue-at-a-time delivery; document bounded action-selection smoke observations and their limits.
+- Organize guidance around connected responsibilities for understanding, communication, execution, and repair.
+- Consolidate overlapping policy into the skill and reduce persistent integration to an activation block.
+- Simplify skill layout and adoption documentation. Exercise eleven text-only development replies without claiming improved reliability.
 
-## 0.1.2
+### 0.1.4
 
-- Require a user-settled direction before implementing vague goals: a concrete choice, approval, or explicit scoped delegation, not the agent's confidence alone.
-- Keep permitted discovery available while the direction is open; preserve direct action for clear requests and existing approval without ritual reconfirmation.
-- Keep unanswered choices open and repair conversational confusion instead of treating an unrelated reply as a decision.
-- Align skill discovery metadata, integration guidance, and examples with the checkpoint; record multi-turn dialogue smoke checks without claiming real-world reliability.
+- Replace task-specific review workflows, menus, question quotas, and readback formats with transferable principles.
+- Preserve authority and continuity without prescribing a conversation sequence.
 
-## 0.1.1
+### 0.1.3
 
-- Help develop still-forming goals through concrete situations, contrasting examples, and small authorized probes instead of repeated abstract questions.
-- Make consequential interpretations checkable; distinguish supplied facts, tentative proposals, ordinary delegated judgment, and scoped approval.
-- Preserve decision reasons and repair mismatched results without resetting the whole agreement or blaming the user's prompt.
-- Expand session examples, compare four reference approaches, and document bounded smoke observations without claiming improved general reliability.
-- Align the `AGENTS.md` integration with developing goals and make its engineering safeguards explicit about scope, supported claims, cause-based fixes, complete migrations, and proportionate verification.
-- Map broad criticism to observable failures and document combined skill/integration smoke checks without promising that instructions prevent mistakes.
+- Expand the then-current review workflow to track coverage and carry unresolved work across turns.
+- Document bounded action-selection observations; this workflow was superseded in 0.1.4.
 
-## 0.1.0
+### 0.1.2
 
-- Publish the canonical `shared-understanding` skill as a dependency-free npm prose package.
-- Categorize the skill under `skills/productivity/`; separate session examples from installation guidance.
-- Provide complete `AGENTS.md` integration guidance, including evidence ownership, proportional effort, mistake ownership, and honest verification.
-- Document installation and instruction integration without automatic configuration edits or claimed reliability rates.
+- Require a settled choice or scoped delegation before committing to an unresolved direction.
+- Preserve authorized exploration and avoid reopening clear approvals.
+
+### 0.1.1
+
+- Support developing unclear goals through examples and authorized exploration.
+- Make interpretations and decision reasons visible; repair mismatches without resetting unrelated decisions or blaming the prompt.
+
+### 0.1.0
+
+- Publish the original skill as a dependency-free prose package with persistent integration and separate explanatory documentation.

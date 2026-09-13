@@ -1,11 +1,16 @@
-## Shared understanding
+# Developing Shared Understanding
 
-Read the installed `shared-understanding` skill at the first actionable request, using your harness's skill discovery/loading mechanism or the `SKILL.md` path it provides. Apply its principles throughout understanding, communication, execution, and verification—not as an interview or response template. Reapply them on consequential changes, understanding checks, and context recovery; do not reread unchanged guidance every turn.
+This file applies only to work on this repository. **It is not the guidance to adopt.** The complete reusable behavioral source is [GUIDANCE.md](GUIDANCE.md). Adopters copy `GUIDANCE.md` into their own loaded instructions, not this repository's `AGENTS.md`.
 
-Proceed within clear authorization. Make consequential interpretations and changes visible while the user can still influence them; resolve choices that change the agreement before acting on them. Prefer the available asking tool when continuing depends on an unsettled, undelegated user decision; derive the question from the conversation rather than a predefined workflow. Communication must guide subsequent work, not merely describe it. Preserve decisions and boundaries across turns, own correction and evidence, and distinguish completion from blocked or unverified work.
+## Change boundaries
 
-The skill is the canonical guidance for these responsibilities; do not maintain a second overlapping policy here. Follow existing project instructions, safety rules, and approval boundaries. If the skill cannot be read, disclose that limitation, retain these boundaries, and continue only work whose intent and authorization are clear.
+- When a change or evaluation concerns behavioral meaning, adoption boundaries, or design choices, read [the general-principle design constraint](docs/general-principles.md). Preserve transferable responsibilities rather than adding a workflow for the latest failure. For mechanical or unrelated edits, read the material relevant to that edit; no full-documentation reading ritual is required.
+- Put adopter-facing behavioral changes only in `GUIDANCE.md`. Keep that entire file appendable and self-contained, without repository instructions or required document loading. Do not duplicate it in this file, a skill, or supporting documentation.
+- Keep repository-development instructions here. Supporting documents explain the guidance, evidence, and design; they do not extend adopter policy. The [maintenance map](docs/general-principles.md#where-a-change-belongs) identifies related updates. If an explanation implies a different obligation, correct it or make an explicit change to the behavioral source rather than leaving competing versions.
+- Carry changes through affected adoption instructions, links, examples, local archive contents, and the unreleased changelog. Preserve access to retired npm versions; keep the checkout private to prevent accidental publication. Do not rewrite historical releases as current usage instructions. Leave genuinely unresolved changes to purpose or authority explicit for the user to decide.
 
-## Repository development
+## Verification
 
-This section applies only to work on the Shared Understanding project, not to ordinary use of the installed skill. Before researching, changing, or evaluating this project, read [the general-principle design constraint](docs/general-principles.md) and preserve it throughout the work. Do not include this repository-only section when copying the persistent integration block into another environment.
+This is a Markdown project, with no build or behavioral test suite. Match checks to the change: inspect relevant links and heading anchors, exercise adoption or replacement in a disposable instruction file when those instructions change, and inspect a locally built archive when its contents change. Local archives must contain `GUIDANCE.md`, not this repository-only `AGENTS.md`; packaging is not publishing and must not be used as permission to publish. For npm retirement changes, verify registry deprecation notices and continued access to historical versions without altering their contents.
+
+Report what the checks actually establish. Copyability, document consistency, and model-generated reviews do not establish reliable collaboration or improvement across models. Keep evidence claims within the conditions exercised; [problems and evidence](docs/problems.md#evaluation-and-evidence) explains the distinction.

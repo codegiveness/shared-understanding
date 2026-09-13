@@ -1,61 +1,62 @@
-# General principles: the project's design constraint
+# Design constraint: transferable principles
 
-This project aims to improve human–agent collaboration across varied goals, domains, conversations, models, and environments. Its skill must express transferable principles without making a familiar task, a previous failure, or a preferred workflow the shape of every interaction.
+Shared Understanding should help collaboration across different goals, domains, models, and environments. It should preserve responsibilities while leaving the interaction responsive to the situation—not make every task resemble the author's last failure or preferred workflow. Broad applicability is a design goal, not an established guarantee.
 
-This is a constraint on developing this project: research, skill revisions, integration instructions, documentation, examples, and evaluation should respect it. It is not an additional runtime skill, a conversation script, or a claim that one document can solve every possible problem. The [skill](../skills/shared-understanding/SKILL.md) remains the canonical behavioral guidance.
+This document explains the design constraint and maintenance rationale for contributors. The repository's `AGENTS.md` identifies when contributors need it. It is not additional policy or required reading for an agent using [GUIDANCE.md](../GUIDANCE.md).
 
-## General does not mean universal assurance
+## What earns persistent context
 
-The range of possible uses exceeds the situations we can anticipate or test. Broad applicability is a design goal; universal effectiveness is not an established result. A principle can remain relevant across contexts while its application depends on the user's intent, available evidence, delegated authority, capabilities, and risks.
+An instruction belongs in `GUIDANCE.md` when it changes a meaningful decision across contexts. It needs a recognizable boundary, not an exhaustive recipe or an uplifting slogan. Preserving user authority, for example, requires distinguishing an undelegated consequential choice from an ordinary decision the agent is already authorized to make. “Always ask first” and “use good judgment” both lose that distinction.
 
-Do not turn the ambition to cover this range into an exhaustive catalog of subjects or rules. No inventory can stand in for the next conversation. Do not claim high confidence merely because the wording sounds comprehensive. Confidence must name what was evaluated and where the evidence stops.
+The guidance keeps the boundaries around forming intent, authorization, completion, evidence, repair, and continuity. It omits harness-specific tool instructions, question schedules, coding-specific techniques, repeated process disclaimers, and research summaries. These either belong to the host environment or explain a possible application rather than define the responsibility. The clarification-channel preference applies to an already-needed question; it does not expand when agents must ask or require a particular harness. Shorter guidance is not better if it leaves the important choice unspecified.
 
-## Preserve responsibilities; leave the interaction open
+Understanding, communication, and execution remain connected. None is a mandatory phase, and none substitutes for the others: fluent dialogue can lead to the wrong result; a correct result can still exceed permission. The user need not arrive with a finished specification. Examples can help develop meaning, but must not quietly choose the user's goal or become the only options available.
 
-The skill should describe what must remain true in collaboration, while leaving appropriate questions, techniques, and actions responsive to context. It should not prescribe which goal the user has or require the same sequence to reach it.
+Transferability does not mean an absence of influence. Instructions necessarily influence behavior. The intended influence is accountable collaboration, not a default subject, interview, or decision sequence.
 
-For example, preserving the user's authority over an unresolved consequential choice is a general responsibility. Requiring every conversation to begin with a priority menu, proceed through an assessment, and finish with ranked findings is a workflow. The former can apply in many settings; the latter needs a specific reason and authorization.
+## One behavioral source
 
-General principles need practical boundaries, not merely uplifting language. A useful principle explains when it matters, what decision it constrains, and when it does not require extra action. Prefer memorable wording tied to recognizable decisions over accumulating qualifications. Clear authorized work must remain possible without manufactured questions. Unclear intent must remain open to development without the agent silently choosing it.
+[GUIDANCE.md](../GUIDANCE.md) is the complete, authoritative source for adopter-facing behavior. Its entire contents can be appended to an existing instruction file. The comment markers identify the installed block for replacement; they no longer separate reusable content from repository instructions within one source file.
 
-## Let the conversation determine the subject
+The repository's `AGENTS.md` contains only development instructions. This separation addresses a [reported delivery problem](problems.md#a-delivery-failure-in-this-project): section markers did not make the two audiences clear enough in practice. A reader can now copy the entire adoption source without importing this repository's maintenance obligations. Local Markdown archives exclude the repository-only `AGENTS.md`. The [retired npm distribution](../README.md#retired-npm-distribution) retains its historical contents for existing users; it is not the current adoption source.
 
-Do not privilege findings, priorities, preferences, software work, personal advice, or any other subject as the organizing pattern of the skill. These are possible contexts, not a closed menu of human needs.
+The distinction is by role, not just filename. An adopter's own `AGENTS.md` can contain this guidance alongside unrelated host instructions; this repository's `AGENTS.md` is not that payload. `GUIDANCE.md` is source material for adoption, not a runtime router or a file every environment knows to load.
 
-Questions should emerge from the actual unresolved meaning or decision. Their number, timing, wording, and grouping should serve understanding and user control, not a quota. An asking tool is a means of communicating, not evidence that the question is neutral or that agreement has been reached. An answer settles the choices it actually addresses; it is not blanket approval for the agent's remaining assumptions.
+The [README](../README.md#documentation-by-audience) maps the documents to their readers. Supporting documents explain principles, problems, evidence, and examples. They are optional for adoption and do not add rules. If an example appears to require a new obligation, the choice is to revise the example or explicitly propose a change to `GUIDANCE.md`, not to let the example become a second policy.
 
-Likewise, generality does not mean avoiding all influence. Instructions necessarily influence behavior. The intended influence is to preserve authority, support understanding, maintain useful evidence, and carry agreed work through. The unwanted influence is to impose a subject, goal, framing, or procedure without grounding it in the conversation.
+There is no parallel skill, generated policy variant, or expanded runtime policy in the docs. Repository-specific contribution requirements belong in `AGENTS.md`; the rationale here explains those requirements rather than extending the reusable guidance.
 
-## Learn from cases without making them the rule
+## Applying the prompt-design article
 
-A reported failure is evidence about an interaction, not proof of a universal cause. Distinguish the observed behavior from possible explanations and proposed repairs. Neither imperfect human communication nor model limitations excuse an agent's unsupported commitments.
+OpenAI's [Rethinking skills and prompts for GPT-6 Astra](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra) recommends revisiting accumulated instructions, avoiding unnecessary document loading and elaborate itineraries, and describing useful decision boundaries and completion. These recommendations inform the design: keep persistent responsibilities focused, leave techniques to contextual judgment, and direct maintainers to relevant documentation rather than requiring the whole project before every edit.
 
-When considering a change, identify the underlying responsibility and the boundary that failed. Consider whether the existing guidance already covers it and whether the failure instead concerns loading, context, tool behavior, execution, or evaluation. More wording is not automatically a repair.
+Its progressive-disclosure advice is useful for specialized workflows, but this project's collaboration guidance is needed throughout work. A runtime router would make essential responsibilities depend on another loading step. The separate adoption file removes mixed audiences without introducing that dependency: users copy its full contents into loaded instructions. Optional explanations remain separate; essential boundaries stay in the copied text.
 
-Keep concrete examples in explanatory documentation and label them as illustrations. An example may clarify a principle; it must not become a hidden mandatory stage. Check that a proposed rule still makes sense in a materially different situation and that it does not obstruct a clear or already-delegated request. These are development considerations, not a required interview or fixed agent workflow.
+The article's observations about Astra's caution, testing habits, and permission judgment are model-specific practitioner guidance, not universal guarantees. They do not justify removing authorization, verification, or completion boundaries for other models—or assuming Astra always applies them correctly. Host instructions, capabilities, permissions, and safeguards still matter.
 
-## Keep each layer's purpose distinct
+The article does not discuss dedicated user-question tools. Preferring a suitable channel for an already-needed question is narrower than adding an approval gate: it leaves clear requests and delegated decisions actionable without reconfirmation. This is a design application of the article's boundary advice, not an article endorsement of the preference or evidence that agents will follow it.
 
-- The canonical skill contains the behavioral principles needed during collaboration.
-- The copyable persistent instruction activates that skill and preserves essential boundaries without becoming a second overlapping policy.
-- Practice examples explain possible applications without prescribing the next conversation.
-- The [problem inventory](problems.md) supports analysis without diagnosing motives or defining every possible failure.
-- This document records the project's design constraint for contributors and agents developing it. It is not additional required reading whenever someone uses the installed skill.
+Inline guidance deliberately trades more always-present text than a short activation reminder for no separate loading step. Neither that tradeoff nor a smaller word count establishes lower cost, better attention, or improved collaboration.
 
-Do not grow routine instruction loading by moving every research observation, example, or design discussion into the skill. Keep a single behavioral source rather than parallel variants. Domain-specific procedures can be appropriate for an authorized task; this general skill should not impose them on unrelated tasks.
+## Where a change belongs
 
-## Earn confidence across differences
+This map is for maintaining the project, not a workflow for agents adopting the guidance. Related updates depend on what actually changes; a typo does not require rewriting every document.
 
-Evaluate actual behavior, not just whether responses repeat the principles. Useful evidence includes whether the agent preserves the intended outcome, obtains needed decisions without forcing agreement, follows the user's answers, acts independently within delegation, repairs mistakes, and verifies the resulting work. Agreement or decision revision is not itself success; retaining a decision can be appropriate. Judge responsiveness to the user's intent and relevant evidence, not how often either participant changes position.
+| Change | Primary location | Corresponding review or updates |
+|---|---|---|
+| A reusable behavioral responsibility or decision boundary | `GUIDANCE.md` | Update affected explanations in this document, [examples](examples.md), and [problems and evidence](problems.md). Change the README if purpose or adoption changes; describe the revision in the changelog. Do not restate the new rule across every document. |
+| Adoption, replacement, or a delivery path | [README](../README.md#use-the-guidance) and, for local archive contents or the publication guard, [package.json](../package.json) | Update affected links and the source-boundary explanation here. Check the full-copy and migration paths, including preservation of unrelated host instructions. Preserve access to retired published artifacts; a moved source file is not a reason to keep an obsolete copy in the current checkout. |
+| Repository-development requirements | Repository `AGENTS.md` | Keep their design rationale here consistent. Keep these requirements out of `GUIDANCE.md` and the repository's `AGENTS.md` out of the package's file list. |
+| An illustrative situation | [Examples](examples.md) | Check it against the behavioral source, including what authority and evidence the situation supplies. Label invention versus observation; a new example need not change policy. |
+| A failure account, research reference, or effectiveness claim | [Problems and evidence](problems.md) | Distinguish report, observation, hypothesis, and measured outcome. Correct dependent claims in the README, rationale, or changelog; research is not validation of this guidance. |
+| Revision or release history | [Changelog](../CHANGELOG.md) | Keep unreleased changes separate from published history. The npm delivery path is retired; keep the checkout private and historical package and lockfile versions aligned. A documentation edit is not a new package release or permission to publish. |
 
-Consider total collaboration cost: user effort, reading, clarification, delay, and avoidable rework. Fewer questions do not necessarily mean efficiency; more communication does not necessarily mean understanding.
+Read related material to trace consequences, not to accumulate runtime instructions. When a design choice is still unresolved, keep it explicit as a proposal rather than installing a competing policy in an example or rationale.
 
-Start with real interactions in the current environment, then broaden across meaningfully different contexts and model–harness combinations. Include clear requests as well as ambiguous ones, changes of direction as well as continuity, and successful direct action as well as appropriate questions. This is an evaluation strategy, not a taxonomy the skill should make users navigate.
+## Revising responsibly
 
-Keep observed improvements separate from proposed benefits. A successful simulation does not establish live user agreement, correct tool use, or transfer to other environments. Failures should change the supported explanation or intervention—not automatically produce another prohibition. Some problems require better tools, context handling, permissions, model capability, or human review rather than prose.
+A failure can come from a missing boundary, unavailable context, conflicting instructions, tools, capability, or execution. Identify the supported problem before adding prose. A repeated failure to apply an existing principle is not automatically a reason to restate it more forcefully.
 
-## Apply this constraint to future project work
+Review a proposed change in materially different situations, including a clear authorized task where it should not introduce questions or delay. Keep concrete cases in the [examples](examples.md) rather than turning them into mandatory stages. Changes to the project's purpose or authority boundaries deserve explicit discussion, not a silent trade for concision.
 
-When researching, revising, or evaluating this project, preserve the distinction between a transferable responsibility and a context-specific technique. Explain consequential changes to that design direction before committing to them. Do not silently trade generality for a familiar workflow or weaken concrete safeguards in pursuit of abstract wording.
-
-The aim is a skill that helps the agent respond responsibly to the situation it encounters—not a skill that makes every situation resemble the one its author last encountered.
+Evaluate behavior and total collaboration cost, including reading, clarification, and avoidable rework—not confidence, agreement, brevity, or question counts alone. The [evaluation guidance](problems.md#evaluation-and-evidence) distinguishes artifact checks and bounded observations from evidence of broader usefulness. Some failures need better runtime controls or human review rather than more instructions.

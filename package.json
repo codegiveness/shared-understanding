@@ -1,7 +1,8 @@
 {
   "name": "@codegiveness/shared-understanding",
   "version": "0.1.6",
-  "description": "Agent guidance for shared intent, consequential communication, and verified execution.",
+  "private": true,
+  "description": "Self-contained AGENTS.md guidance for shared intent, user authority, and verified work.",
   "license": "MIT",
   "author": "codegiveness",
   "repository": {
@@ -13,19 +14,14 @@
     "url": "https://github.com/codegiveness/shared-understanding/issues"
   },
   "keywords": [
-    "agent-skills",
+    "agents-md",
     "shared-understanding",
     "prompt-engineering",
     "agent"
   ],
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
   "files": [
-    "skills/",
     "docs/",
-    "AGENTS.md",
+    "GUIDANCE.md",
     "README.md",
     "LICENSE",
     "CHANGELOG.md"
